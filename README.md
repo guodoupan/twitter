@@ -22,5 +22,6 @@ Time spent: `<3 hours>`
   - [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
   - [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
   - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+
 #### Walkthrough
 ![Video Walkthrough](walkthrough.gif)
