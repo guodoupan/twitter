@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Doupan Guo. All rights reserved.
 //
 
-#import "Twitter.h"
+#import "Tweet.h"
 
-@implementation Twitter
+@implementation Tweet
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     
@@ -29,7 +29,7 @@
     NSMutableArray *tweets = [NSMutableArray array];
     
     for (NSDictionary *dictionary in array) {
-        [tweets addObject:[[Twitter alloc] initWithDictionary: dictionary] ];
+        [tweets addObject:[[Tweet alloc] initWithDictionary: dictionary] ];
     }
     return tweets;
 }
