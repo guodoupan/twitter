@@ -15,11 +15,15 @@
 
 @implementation LoginViewController
 - (IBAction)onLogin:(id)sender {
-    [[TwitterClient shareInstance] fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"guodoupan.com"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
-        NSLog(@"got request token");
-    }failure:^(NSError *error) {
-        NSLog(@"failed");
+    
+    [[TwitterClient shareInstance] loginWithCompletion:^(User *user, NSError *error) {
+        if (user) {
+            NSLog(@"user:%@", user.name);
+        } else {
+            
+        }
     }];
+    
 }
 
 - (void)viewDidLoad {

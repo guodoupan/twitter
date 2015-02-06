@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TwitterClient.h"
+#import "User.h"
+#import "Twitter.h"
 
 @interface AppDelegate ()
 
@@ -45,6 +48,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[TwitterClient shareInstance] openUrl:url];
+    return YES;
 }
 
 @end
