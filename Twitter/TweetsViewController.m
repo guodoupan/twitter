@@ -14,6 +14,7 @@
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 - (void)onLogout;
 - (void)onNewTweet;
@@ -50,6 +51,10 @@
      [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     [self loadData];
     // Do any additional setup after loading the view from its nib.
 }
@@ -67,6 +72,7 @@
         } else {
             NSLog(@"load home error:%@", error);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
