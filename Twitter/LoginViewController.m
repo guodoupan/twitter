@@ -20,7 +20,8 @@
     [[TwitterClient shareInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user) {
             NSLog(@"user:%@", user.name);
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
+            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]];
+            [self presentViewController:nvc animated:YES completion:nil];
         } else {
             
         }

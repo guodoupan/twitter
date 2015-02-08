@@ -11,19 +11,46 @@
 #import "TwitterClient.h"
 #import "Tweet.h"
 
-@interface TweetsViewController ()
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *dataArray;
 
+- (void)onLogout;
+- (void)onNewTweet;
 @end
 
 @implementation TweetsViewController
 
+- (TweetCell *)protoTypeCell {
+    if (!_protoTypeCell) {
+        _protoTypeCell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    }
+    return _protoTypeCell;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        self.title = @"Home";
+        
+        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
+        leftButton.tintColor = [UIColor blueColor];
+        self.navigationItem.leftBarButtonItem = leftButton;
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNewTweet)];
+        rightButton.tintColor = [UIColor blueColor];
+        self.navigationItem.rightBarButtonItem = rightButton;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[TwitterClient shareInstance] homeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        for (Tweet *tweet in tweets) {
-            NSLog(@"tweet:%@", tweet.text);
-        }
-    }];
+     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self loadData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -31,8 +58,51 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)onLogout:(id)sender {
+
+- (void)loadData {
+    [[TwitterClient shareInstance] homeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+        if (error == nil) {
+            self.dataArray = tweets;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"load home error:%@", error);
+        }
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.protoTypeCell.tweet = self.dataArray[indexPath.row];
+    [self.protoTypeCell layoutIfNeeded];
+    
+    CGSize size = [self.protoTypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    Tweet *tweet = self.dataArray[indexPath.row];
+    cell.tweet = tweet;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
+- (void)onLogout {
     [User logout];
+}
+
+- (void)onNewTweet {
+    NSLog(@"new tweet");
 }
 
 /*
