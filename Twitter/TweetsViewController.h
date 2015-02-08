@@ -12,4 +12,5 @@
 @interface TweetsViewController : UIViewController
 
 @property (nonatomic, strong) TweetCell *protoTypeCell;
+@property (nonatomic, strong) User *user;
 @end

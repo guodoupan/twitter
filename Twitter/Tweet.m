@@ -45,7 +45,7 @@
     double ti = [convertedDate timeIntervalSinceDate:todayDate];
     ti = ti * -1;
     if(ti < 1) {
-        return @"never";
+        return @"0s";
     } else 	if (ti < 60) {
         return [NSString stringWithFormat:@"%ds", (int)ti];
     } else if (ti < 3600) {

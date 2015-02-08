@@ -10,8 +10,9 @@
 #import "User.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "ComposeViewController.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -109,8 +110,18 @@
 
 - (void)onNewTweet {
     NSLog(@"new tweet");
+    ComposeViewController *vc = [[ComposeViewController alloc] init];
+    vc.user = self.user;
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)composeViewController:(ComposeViewController *)composeViewControlller didNewTweet:(Tweet *)tweet {
+    NSMutableArray *array = [self.dataArray mutableCopy];
+    [array insertObject:tweet atIndex:0];
+    self.dataArray = array;
+    [self.tableView reloadData];
+}
 /*
 #pragma mark - Navigation
 
