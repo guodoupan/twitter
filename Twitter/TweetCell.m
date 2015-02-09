@@ -15,11 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *replyButton;
-@property (weak, nonatomic) IBOutlet UIImageView *retweetButton;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteLabel;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweenButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -48,11 +48,14 @@
     if (tweet != nil) {
         self.nameLabel.text = tweet.user.name;
         self.displayNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-        self.createdAtLabel.text = tweet.createdAt;
+        self.createdAtLabel.text = [Tweet dateDiff:tweet.createdAt];
         self.contentLabel.text = tweet.text;
         [self.iconImage setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
         self.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
         self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+        
+        [self.favoriteButton setSelected:tweet.favorited == 1];
+        [self.retweenButton setSelected:tweet.retweeted == 1];
     }
 }
 

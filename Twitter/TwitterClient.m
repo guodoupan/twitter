@@ -92,4 +92,32 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         completion(nil, error);
     }];
 }
+
+- (void)toggleFavorites: (NSString *)tweetId isFavorited:(BOOL)favorited completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:tweetId forKey:@"id"];
+    NSString *url = favorited ? @"1.1/favorites/destroy.json" : @"1.1/favorites/create.json";
+    [self POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet =[[Tweet alloc] initWithDictionary:responseObject];
+        NSLog(@"respnse:%@", tweet);
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"update status error:%@", error);
+        completion(nil, error);
+    }];
+}
+
+- (void)retweet: (NSString *)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweetId];
+    [self POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet =[[Tweet alloc] initWithDictionary:responseObject];
+        NSLog(@"respnse:%@", tweet);
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"update status error:%@", error);
+        completion(nil, error);
+    }];
+}
+
 @end

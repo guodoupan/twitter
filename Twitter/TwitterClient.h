@@ -19,4 +19,8 @@
 - (void)homeLineWithParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
 
 - (void)updateStatus: (NSString *)status completion:(void (^)(Tweet *tweet, NSError *error))completion;
+
+- (void)toggleFavorites: (NSString *)tweetId isFavorited:(BOOL)favorited completion:(void (^)(Tweet *tweet, NSError *error))completion;
+
+- (void)retweet: (NSString *)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion;
 @end

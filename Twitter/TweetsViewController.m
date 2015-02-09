@@ -11,6 +11,7 @@
 #import "TwitterClient.h"
 #import "Tweet.h"
 #import "ComposeViewController.h"
+#import "TweetViewController.h"
 
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -98,6 +99,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TweetViewController *vc = [[TweetViewController alloc] init];
+    vc.tweet = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath

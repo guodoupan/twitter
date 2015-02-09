@@ -11,6 +11,8 @@
 		0F9800851A87DAAF0030CC43 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9800831A87DAAF0030CC43 /* TweetCell.xib */; };
 		0F98008A1A8816150030CC43 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9800881A8816150030CC43 /* ComposeViewController.m */; };
 		0F98008B1A8816150030CC43 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9800891A8816150030CC43 /* ComposeViewController.xib */; };
+		0F98008F1A8825F80030CC43 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F98008D1A8825F80030CC43 /* TweetViewController.m */; };
+		0F9800901A8825F80030CC43 /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F98008E1A8825F80030CC43 /* TweetViewController.xib */; };
 		0F9CF8371A851B3500669284 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF8361A851B3500669284 /* Tweet.m */; };
 		0F9CF83A1A851B4400669284 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF8391A851B4400669284 /* User.m */; };
 		0F9CF83E1A85270200669284 /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF83C1A85270200669284 /* TweetsViewController.m */; };
@@ -44,6 +46,9 @@
 		0F9800871A8816150030CC43 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		0F9800881A8816150030CC43 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		0F9800891A8816150030CC43 /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
+		0F98008C1A8825F80030CC43 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
+		0F98008D1A8825F80030CC43 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
+		0F98008E1A8825F80030CC43 /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetViewController.xib; sourceTree = "<group>"; };
 		0F9CF8351A851B3500669284 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		0F9CF8361A851B3500669284 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		0F9CF8381A851B4400669284 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -101,6 +106,9 @@
 				0F9800871A8816150030CC43 /* ComposeViewController.h */,
 				0F9800881A8816150030CC43 /* ComposeViewController.m */,
 				0F9800891A8816150030CC43 /* ComposeViewController.xib */,
+				0F98008C1A8825F80030CC43 /* TweetViewController.h */,
+				0F98008D1A8825F80030CC43 /* TweetViewController.m */,
+				0F98008E1A8825F80030CC43 /* TweetViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9CF83F1A85270200669284 /* TweetsViewController.xib in Resources */,
+				0F9800901A8825F80030CC43 /* TweetViewController.xib in Resources */,
 				0F98008B1A8816150030CC43 /* ComposeViewController.xib in Resources */,
 				0F9800851A87DAAF0030CC43 /* TweetCell.xib in Resources */,
 				0FA8BEB71A83C93C00149446 /* LaunchScreen.xib in Resources */,
@@ -356,6 +365,7 @@
 				0FA8BEAC1A83C93C00149446 /* AppDelegate.m in Sources */,
 				0F9CF83A1A851B4400669284 /* User.m in Sources */,
 				0F98008A1A8816150030CC43 /* ComposeViewController.m in Sources */,
+				0F98008F1A8825F80030CC43 /* TweetViewController.m in Sources */,
 				0FA8BEA91A83C93C00149446 /* main.m in Sources */,
 				0FA8BECF1A83CAA400149446 /* LoginViewController.m in Sources */,
 				0F9CF8371A851B3500669284 /* Tweet.m in Sources */,
@@ -475,7 +485,9 @@
 			baseConfigurationReference = 0A775FDD90BF0EAFF9607726 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Twitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,7 +498,9 @@
 			baseConfigurationReference = E4D791505518A16432C2C772 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Twitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
