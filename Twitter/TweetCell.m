@@ -8,6 +8,8 @@
 
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
+#import "ComposeViewController.h"
 
 @interface TweetCell()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -57,6 +59,29 @@
         [self.favoriteButton setSelected:tweet.favorited == 1];
         [self.retweenButton setSelected:tweet.retweeted == 1];
     }
+}
+- (IBAction)onReply:(id)sender {
+    NSLog(@"onReply");
+    [self.delegate tweetCellDidReply:self];
+
+}
+
+- (IBAction)onFavorite:(id)sender {
+    NSLog(@"onFavorite");
+    [self.delegate tweetCell:self didFavorite:[sender isSelected]];
+}
+
+- (IBAction)onRetweet:(id)sender {
+    NSLog(@"onRetweet");
+    [self.delegate tweetCell:self didRetweet:[sender isSelected]];
+}
+
+- (void)setRetweet:(BOOL)selected {
+    [self.retweenButton setSelected:selected];
+}
+
+- (void)setFavorite:(BOOL)selected {
+    [self.favoriteButton setSelected:selected];
 }
 
 @end

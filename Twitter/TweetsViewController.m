@@ -13,7 +13,7 @@
 #import "ComposeViewController.h"
 #import "TweetViewController.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -90,6 +90,7 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.dataArray[indexPath.row];
     cell.tweet = tweet;
+    cell.delegate = self;
     return cell;
 }
 
@@ -124,6 +125,47 @@
     [array insertObject:tweet atIndex:0];
     self.dataArray = array;
     [self.tableView reloadData];
+}
+
+- (void)tweetCell:(TweetCell *)cell didFavorite:(BOOL)favorited {
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+    Tweet *oldTweet = self.dataArray[indexpath.row];
+    [[TwitterClient shareInstance] toggleFavorites:oldTweet.nsid isFavorited:favorited completion:^(Tweet *tweet, NSError *error) {
+        if (error == nil) {
+            if ([tweet.nsid isEqualToString:oldTweet.nsid]) {
+                [cell setFavorite:tweet.favorited == 1];
+            }
+        } else {
+            NSLog(@"favorite failed:%@", error);
+        }
+    }];
+}
+
+- (void)tweetCell:(TweetCell *)cell didRetweet:(BOOL)retweeted {
+    if (!retweeted) {
+        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+        Tweet *oldTweet = self.dataArray[indexpath.row];
+        NSString *nsid = oldTweet.nsid;
+        [[TwitterClient shareInstance] retweet:nsid completion:^(Tweet *tweet, NSError *error) {
+            if (error == nil) {
+                [cell setRetweet:YES];
+            } else {
+                NSLog(@"retweet error %@", error);
+            }
+        }];
+    } else {
+        NSLog(@"unretweet");
+    }
+}
+
+- (void)tweetCellDidReply:(TweetCell *)cell {
+    NSLog(@"onReply");
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.dataArray[indexpath.row];
+    ComposeViewController *vc = [[ComposeViewController alloc] init];
+    vc.replyId = tweet.nsid;
+    vc.replyName = tweet.user.screenName;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /*
 #pragma mark - Navigation
