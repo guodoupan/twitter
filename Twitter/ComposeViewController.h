@@ -21,5 +21,7 @@
 @interface ComposeViewController : UIViewController
 
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSString *replyId;
+@property (nonatomic, strong) NSString *replyName;
 @property (nonatomic, weak) id<ComposeViewControllerDelegate> delegate;
 @end

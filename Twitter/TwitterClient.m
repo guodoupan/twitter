@@ -80,10 +80,10 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-- (void)updateStatus: (NSString *)status completion:(void (^)(Tweet *tweet, NSError *error))completion {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:status forKey:@"status"];
-    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)updateStatus: (NSString *)status withParams: (NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    NSMutableDictionary *allparams = [params mutableCopy];
+    [allparams setValue:status forKey:@"status"];
+    [self POST:@"1.1/statuses/update.json" parameters:allparams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Tweet *tweet =[[Tweet alloc] initWithDictionary:responseObject];
         NSLog(@"respnse:%@", tweet);
         completion(tweet, nil);

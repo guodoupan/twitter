@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 
 - (void)onNewTweet;
+- (void)onCancel;
 @end
 
 @implementation ComposeViewController
@@ -27,6 +28,10 @@
     
     if (self) {
        
+        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
+        leftButton.tintColor = [UIColor blueColor];
+        self.navigationItem.leftBarButtonItem = leftButton;
+        
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(onNewTweet)];
         rightButton.tintColor = [UIColor blueColor];
         self.navigationItem.rightBarButtonItem = rightButton;
@@ -37,9 +42,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.user = [User currentUser];
     [self.imageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl]];
     self.nameLabel.text = self.user.name;
     self.screenNameLabel.text = self.user.screenName;
+    if (self.replyName != nil) {
+        self.textField.text = [NSString stringWithFormat:@"@%@ ", self.replyName];
+    }
+    [self.textField becomeFirstResponder];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,8 +58,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onCancel {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)onNewTweet {
-    [[TwitterClient shareInstance] updateStatus:self.textField.text completion:^(Tweet *tweet, NSError *error) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (self.replyId != nil) {
+        [params setObject:self.replyId forKey:@"in_reply_to_status_id"];
+    }
+    [[TwitterClient shareInstance] updateStatus:self.textField.text withParams:params completion:^(Tweet *tweet, NSError *error) {
         if (error == nil) {
             NSLog(@"update:%@", tweet.text);
             [self.delegate composeViewController:self didNewTweet:tweet];

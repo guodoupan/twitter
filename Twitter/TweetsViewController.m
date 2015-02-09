@@ -115,7 +115,6 @@
 - (void)onNewTweet {
     NSLog(@"new tweet");
     ComposeViewController *vc = [[ComposeViewController alloc] init];
-    vc.user = self.user;
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }

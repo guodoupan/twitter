@@ -9,6 +9,7 @@
 #import "TweetViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
+#import "ComposeViewController.h"
 
 @interface TweetViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -26,7 +27,7 @@
 
 @implementation TweetViewController
 - (IBAction)onReply:(id)sender {
-    NSLog(@"onReply");
+    [self onReply];
 }
 - (IBAction)onRetweet:(id)sender {
     NSLog(@"onRetweet");
@@ -89,7 +90,11 @@
 }
 
 - (void)onReply {
-    
+    NSLog(@"onReply");
+    ComposeViewController *vc = [[ComposeViewController alloc] init];
+    vc.replyId = self.tweet.nsid;
+    vc.replyName = self.tweet.user.screenName;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /*
 #pragma mark - Navigation
