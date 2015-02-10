@@ -1,6 +1,6 @@
 This is a basic twitter app to read and compose tweets the Twitter API.
 
-Time spent: `<10 hours>`
+Time spent: `<11 hours>`
 
 ### Features
 
