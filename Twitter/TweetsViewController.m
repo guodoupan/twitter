@@ -7,11 +7,6 @@
 //
 
 #import "TweetsViewController.h"
-#import "User.h"
-#import "TwitterClient.h"
-#import "Tweet.h"
-#import "ComposeViewController.h"
-#import "TweetViewController.h"
 
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -66,16 +61,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dataLoaded:(NSArray *)tweets withError:(NSError *)error {
+    if (error == nil) {
+        self.dataArray = tweets;
+        [self.tableView reloadData];
+    } else {
+        NSLog(@"load home error:%@", error);
+    }
+    [self.refreshControl endRefreshing];
+}
+
 - (void)loadData {
-    [[TwitterClient shareInstance] homeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        if (error == nil) {
-            self.dataArray = tweets;
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"load home error:%@", error);
-        }
-        [self.refreshControl endRefreshing];
-    }];
+    NSLog(@"abstarct loading");
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

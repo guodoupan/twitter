@@ -16,12 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadData {
+    [[TwitterClient shareInstance] userTimeline:self.user.screenName withParams:nil completion:^(NSArray *tweets, NSError *error) {
+        [self dataLoaded:tweets withError:error];
+    }];
 }
 
 /*

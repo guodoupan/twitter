@@ -31,10 +31,9 @@
 		0FACACE31A92B62E001865C2 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FACACE11A92B62E001865C2 /* MenuViewController.xib */; };
 		0FACACE71A92B63C001865C2 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACE51A92B63C001865C2 /* ContentViewController.m */; };
 		0FACACE81A92B63C001865C2 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FACACE61A92B63C001865C2 /* ContentViewController.xib */; };
-		0FACACEC1A92C54D001865C2 /* MentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACEA1A92C54D001865C2 /* MentionViewController.m */; };
-		0FACACED1A92C54D001865C2 /* MentionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FACACEB1A92C54D001865C2 /* MentionViewController.xib */; };
-		0FACACF11A92C55C001865C2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACEF1A92C55C001865C2 /* ProfileViewController.m */; };
-		0FACACF21A92C55C001865C2 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FACACF01A92C55C001865C2 /* ProfileViewController.xib */; };
+		0FACACF51A92DC4C001865C2 /* MentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACF41A92DC4C001865C2 /* MentionViewController.m */; };
+		0FACACF81A92DDFF001865C2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACF71A92DDFF001865C2 /* HomeViewController.m */; };
+		0FACACFB1A92DE2B001865C2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FACACFA1A92DE2B001865C2 /* ProfileViewController.m */; };
 		1E6AC01FA08E831F7968D7D5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 733361395AC285E5C339B4F0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -90,12 +89,12 @@
 		0FACACE41A92B63C001865C2 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		0FACACE51A92B63C001865C2 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		0FACACE61A92B63C001865C2 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
-		0FACACE91A92C54D001865C2 /* MentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionViewController.h; sourceTree = "<group>"; };
-		0FACACEA1A92C54D001865C2 /* MentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionViewController.m; sourceTree = "<group>"; };
-		0FACACEB1A92C54D001865C2 /* MentionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionViewController.xib; sourceTree = "<group>"; };
-		0FACACEE1A92C55C001865C2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		0FACACEF1A92C55C001865C2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		0FACACF01A92C55C001865C2 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		0FACACF31A92DC4C001865C2 /* MentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionViewController.h; sourceTree = "<group>"; };
+		0FACACF41A92DC4C001865C2 /* MentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionViewController.m; sourceTree = "<group>"; };
+		0FACACF61A92DDFF001865C2 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0FACACF71A92DDFF001865C2 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		0FACACF91A92DE2B001865C2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		0FACACFA1A92DE2B001865C2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		733361395AC285E5C339B4F0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D791505518A16432C2C772 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,12 +142,12 @@
 				0FACACE41A92B63C001865C2 /* ContentViewController.h */,
 				0FACACE51A92B63C001865C2 /* ContentViewController.m */,
 				0FACACE61A92B63C001865C2 /* ContentViewController.xib */,
-				0FACACE91A92C54D001865C2 /* MentionViewController.h */,
-				0FACACEA1A92C54D001865C2 /* MentionViewController.m */,
-				0FACACEB1A92C54D001865C2 /* MentionViewController.xib */,
-				0FACACEE1A92C55C001865C2 /* ProfileViewController.h */,
-				0FACACEF1A92C55C001865C2 /* ProfileViewController.m */,
-				0FACACF01A92C55C001865C2 /* ProfileViewController.xib */,
+				0FACACF31A92DC4C001865C2 /* MentionViewController.h */,
+				0FACACF41A92DC4C001865C2 /* MentionViewController.m */,
+				0FACACF61A92DDFF001865C2 /* HomeViewController.h */,
+				0FACACF71A92DDFF001865C2 /* HomeViewController.m */,
+				0FACACF91A92DE2B001865C2 /* ProfileViewController.h */,
+				0FACACFA1A92DE2B001865C2 /* ProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -345,12 +344,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FACACE81A92B63C001865C2 /* ContentViewController.xib in Resources */,
-				0FACACED1A92C54D001865C2 /* MentionViewController.xib in Resources */,
 				0F9CF83F1A85270200669284 /* TweetsViewController.xib in Resources */,
 				0F9800901A8825F80030CC43 /* TweetViewController.xib in Resources */,
 				0F98008B1A8816150030CC43 /* ComposeViewController.xib in Resources */,
 				0F9800851A87DAAF0030CC43 /* TweetCell.xib in Resources */,
-				0FACACF21A92C55C001865C2 /* ProfileViewController.xib in Resources */,
 				0FACACE31A92B62E001865C2 /* MenuViewController.xib in Resources */,
 				0FA8BEB71A83C93C00149446 /* LaunchScreen.xib in Resources */,
 				0FA8BEB41A83C93C00149446 /* Images.xcassets in Resources */,
@@ -408,16 +405,17 @@
 			files = (
 				0FA8BED31A83CBD800149446 /* TwitterClient.m in Sources */,
 				0FA8BEAC1A83C93C00149446 /* AppDelegate.m in Sources */,
+				0FACACFB1A92DE2B001865C2 /* ProfileViewController.m in Sources */,
 				0F9CF83A1A851B4400669284 /* User.m in Sources */,
-				0FACACEC1A92C54D001865C2 /* MentionViewController.m in Sources */,
-				0FACACF11A92C55C001865C2 /* ProfileViewController.m in Sources */,
 				0F98008A1A8816150030CC43 /* ComposeViewController.m in Sources */,
 				0FACACE71A92B63C001865C2 /* ContentViewController.m in Sources */,
 				0F98008F1A8825F80030CC43 /* TweetViewController.m in Sources */,
+				0FACACF81A92DDFF001865C2 /* HomeViewController.m in Sources */,
 				0FA8BEA91A83C93C00149446 /* main.m in Sources */,
 				0FA8BECF1A83CAA400149446 /* LoginViewController.m in Sources */,
 				0FACACE21A92B62E001865C2 /* MenuViewController.m in Sources */,
 				0F9CF8371A851B3500669284 /* Tweet.m in Sources */,
+				0FACACF51A92DC4C001865C2 /* MentionViewController.m in Sources */,
 				0F9CF83E1A85270200669284 /* TweetsViewController.m in Sources */,
 				0F9800841A87DAAF0030CC43 /* TweetCell.m in Sources */,
 				0FACACDD1A925050001865C2 /* BurgerViewController.m in Sources */,

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Doupan Guo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TweetsViewController.h"
 
-@interface MentionViewController : UIViewController
+@interface MentionViewController : TweetsViewController
 
 @end

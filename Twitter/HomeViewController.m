@@ -1,18 +1,18 @@
 //
-//  MentionViewController.m
+//  HomeViewController.m
 //  Twitter
 //
 //  Created by Doupan Guo on 2/16/15.
 //  Copyright (c) 2015 Doupan Guo. All rights reserved.
 //
 
-#import "MentionViewController.h"
+#import "HomeViewController.h"
 
-@interface MentionViewController ()
+@interface HomeViewController ()
 
 @end
 
-@implementation MentionViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,7 @@
 }
 
 - (void)loadData {
-    [[TwitterClient shareInstance]metionTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+    [[TwitterClient shareInstance]homeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         [self dataLoaded:tweets withError:error];
     }];
 }

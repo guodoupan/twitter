@@ -18,6 +18,11 @@
 
 - (void)homeLineWithParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
 
+
+- (void)metionTimelineWithParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
+
+- (void)userTimeline: (NSString *)screenName withParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
+
 - (void)updateStatus: (NSString *)status withParams: (NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion;
 
 - (void)toggleFavorites: (NSString *)tweetId isFavorited:(BOOL)favorited completion:(void (^)(Tweet *tweet, NSError *error))completion;

@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TweetCell.h"
+#import "User.h"
+#import "TwitterClient.h"
+#import "Tweet.h"
+#import "ComposeViewController.h"
+#import "TweetViewController.h"
 
 @interface TweetsViewController : UIViewController
 
 @property (nonatomic, strong) TweetCell *protoTypeCell;
 @property (nonatomic, strong) User *user;
+
+- (void)loadData;
+- (void)dataLoaded: (NSArray *)tweets withError:(NSError *)error;
 @end

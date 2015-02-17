@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.h
+//  HomeViewController.h
 //  Twitter
 //
 //  Created by Doupan Guo on 2/16/15.
@@ -8,6 +8,6 @@
 
 #import "TweetsViewController.h"
 
-@interface ProfileViewController : TweetsViewController
+@interface HomeViewController : TweetsViewController
 
 @end

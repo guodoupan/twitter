@@ -11,6 +11,7 @@
 #import "TweetsViewController.h"
 #import "MentionViewController.h"
 #import "ProfileViewController.h"
+#import "HomeViewController.h"
 
 @interface ContentViewController : UIViewController
 

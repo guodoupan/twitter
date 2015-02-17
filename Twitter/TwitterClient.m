@@ -80,6 +80,30 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+- (void)metionTimelineWithParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        NSLog(@"respnse:%@", responseObject);
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)userTimeline: (NSString *)screenName withParams: (NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    NSMutableDictionary *allParams = [params mutableCopy];
+    [allParams setObject:screenName forKey:@"screen_name"];
+    [self GET:@"1.1/statuses/user_timeline.json" parameters:allParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        NSLog(@"respnse:%@", responseObject);
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+
+}
+
+
 - (void)updateStatus: (NSString *)status withParams: (NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion {
     NSMutableDictionary *allparams = [params mutableCopy];
     [allparams setValue:status forKey:@"status"];
