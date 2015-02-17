@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Tweet.h"
 #import "TweetsViewController.h"
+#import "BurgerViewController.h"
 
 @interface AppDelegate ()
 
@@ -31,9 +32,11 @@
     
     if (user != nil) {
         NSLog(@"welcome: %@", user.name);
-        TweetsViewController *vc = [[TweetsViewController alloc] init];
+//        TweetsViewController *vc = [[TweetsViewController alloc] init];
+//        vc.user = user;
+        BurgerViewController *vc = [[BurgerViewController alloc] init];
         vc.user = user;
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = vc;
     } else {
         NSLog(@"not login");
         self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
